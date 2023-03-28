@@ -1,0 +1,83 @@
+TOKEN: K_LOOP        LEXEME: LOOP
+TOKEN: T_IDENT       LEXEME: a
+RULE: Factor ::= T_IDENT
+TOKEN: OP_RELATION   LEXEME: #
+RULE: Term ::= Factor
+RULE: SimpleExpression ::= Term
+TOKEN: T_IDENT       LEXEME: b
+RULE: Factor ::= T_IDENT
+TOKEN: K_COLON       LEXEME: :
+RULE: Term ::= Factor
+RULE: SimpleExpression ::= Term
+RULE: Expression ::= SimpleExpression
+RULE: Expression ::= SimpleExpression OP_RELATION Expression
+TOKEN: K_IF          LEXEME: IF
+TOKEN: T_IDENT       LEXEME: a
+RULE: Factor ::= T_IDENT
+TOKEN: OP_RELATION   LEXEME: >
+RULE: Term ::= Factor
+RULE: SimpleExpression ::= Term
+TOKEN: T_IDENT       LEXEME: b
+RULE: Factor ::= T_IDENT
+TOKEN: K_COLON       LEXEME: :
+RULE: Term ::= Factor
+RULE: SimpleExpression ::= Term
+RULE: Expression ::= SimpleExpression
+RULE: Expression ::= SimpleExpression OP_RELATION Expression
+TOKEN: T_IDENT       LEXEME: a
+TOKEN: OP_ASSIGN     LEXEME: <-
+TOKEN: T_IDENT       LEXEME: a
+RULE: Factor ::= T_IDENT
+TOKEN: OP_ADD        LEXEME: -
+RULE: Term ::= Factor
+TOKEN: T_IDENT       LEXEME: b
+RULE: Factor ::= T_IDENT
+TOKEN: K_ELSE        LEXEME: ELSE:
+RULE: Term ::= Factor
+RULE: SimpleExpression ::= Term
+RULE: SimpleExpression ::= Term OP_ADD SimpleExpression
+RULE: Expression ::= SimpleExpression
+RULE: Assignment ::= identifier <- Expression
+RULE: Statement ::= Assignment
+RULE: StatementSequence ::= Statement
+TOKEN: T_IDENT       LEXEME: b
+TOKEN: OP_ASSIGN     LEXEME: <-
+TOKEN: T_IDENT       LEXEME: b
+RULE: Factor ::= T_IDENT
+TOKEN: OP_ADD        LEXEME: -
+RULE: Term ::= Factor
+TOKEN: T_IDENT       LEXEME: a
+RULE: Factor ::= T_IDENT
+TOKEN: K_SC          LEXEME: ;
+RULE: Term ::= Factor
+RULE: SimpleExpression ::= Term
+RULE: SimpleExpression ::= Term OP_ADD SimpleExpression
+RULE: Expression ::= SimpleExpression
+RULE: Assignment ::= identifier <- Expression
+RULE: Statement ::= Assignment
+RULE: StatementSequence ::= Statement
+RULE: IfStatement ::= IF Expression : StatementSequence ELSE: StatementSequence ;
+RULE: Statement ::= IfStatement
+TOKEN: K_SC          LEXEME: ;
+RULE: StatementSequence ::= Statement
+RULE: WhileStatement ::= LOOP Expression : StatementSequence ;
+RULE: Statement ::= LoopStatement
+TOKEN: K_PERIOD      LEXEME: .
+TOKEN: K_PRINT       LEXEME: PRINT
+TOKEN: K_LPAREN      LEXEME: (
+TOKEN: T_STRING      LEXEME: "Hello"
+RULE: Factor ::= T_STRING
+TOKEN: OP_ADD        LEXEME: &
+RULE: Term ::= Factor
+TOKEN: T_STRING      LEXEME: "World!"
+RULE: Factor ::= T_STRING
+TOKEN: K_RPAREN      LEXEME: )
+RULE: Term ::= Factor
+RULE: SimpleExpression ::= Term
+RULE: SimpleExpression ::= Term OP_ADD SimpleExpression
+RULE: Expression ::= SimpleExpression
+RULE: PrintStatement ::= PRINT ( Expression )
+RULE: Statement ::= PrintStatement
+RULE: StatementSequence ::= Statement
+RULE: StatementSequence ::= Statement . StatementSequence
+CORRECT

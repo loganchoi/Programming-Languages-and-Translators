@@ -1,0 +1,17 @@
+Homework #3
+
+Information about this homework is at: 
+https://umsystem.instructure.com/courses/45475/assignments/1288815
+
+IMPORTANT:
+
+1)
+Modify the sample '.gitignore' file to ignore any binary files.
+It is bad practice to include executables in your git repo.
+
+2)
+Remember to add, commit, and push your submission files.
+
+git add FILENAME
+git commit -m "meaningful commit message"
+git push
